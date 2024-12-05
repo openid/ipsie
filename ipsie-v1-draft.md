@@ -24,38 +24,73 @@ To make that happen, I need to know:
 
 > set up user authentication via federated relationship with a customer's workforce IdP
 
+### Protocols
+> OpenID Connect
+> SAML 
+
 ## User Provisioning and Deprovisioning
 
 > set up user provisioning and deprovisioning between a customer's workforce IdP and my application
+
+### Protocols
+- SCIM
+- SCIM Events (draft, not yet an RFC)
 
 ## Group Provisioning and Deprovisioning
 
 > set up group provisioning and deprovisioning between a customer's workforce IdP and my application
 
+### Protocols
+- SCIM
+- SCIM Events (draft, not yet an RFC)
+
+
 ## Ensure Least Privileged Access
 
 > ensure end users only have access to what they need in my application at any given point in time
+
+### Protocols
+- TBD
 
 ## Convey Required Authentication Level to the IdP
 
 > be able to convey to the customer's IdP that I require a certain authentication level, request step-up, or request re-authentication of the user via the customer's IdP
 
+### Protocols
+- TBD 
+
 ## Know whether Required Authentication Level was Met at the IdP
 
 > know whether that authentication level was met at the IdP during a sign-in, step-up, or re-authentication event
+
+### Protocols
+- OIDC ID Token `acr` and `amr` claims
 
 ## Receive Notifications of Revoked Tokens
 
 > be notified when tokens have been revoked
 
+### Protocols
+- TBD
+ 
 ## Receive Notifications of Invalidated Sessions
 
 > be notified when sessions have been invalidated
+
+### Protocols
+- Shared Signals Framework CAEP
+ 
 
 ## Receive Signals about Account Posture or Integrity Changes
 
 > receive real-time signals about changes in account posture or integrity
 
+### Protocols
+- Shared Signals Framework CAEP
+
 ## Receive Signals about Device Posture or Integrity Changes
 
 > receive real-time signals about changes in the device posture or integrity (e.g. from device management services, EDR, etc.)
+
+### Protocols
+- Shared Signals Framework CAEP
