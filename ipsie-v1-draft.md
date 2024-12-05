@@ -7,10 +7,14 @@ As a developer building a new business application, which will be used by many o
 * ensure end users only have access to what they need in my application at any given point in time
 * be able to convey to the customer's IdP that I require a certain authentication level, require step-up authentication, or require re-authentication (e.g. due to policy enforcement at the RP)
 * know whether that authentication level was met at the IdP during a sign-in
+* be able to convey to the customer's IDP that I require a certain identity verification level and/or require additional identity attributes (e.g. due to policy enforcement at the RP)
+* know whether the requested identity verification was met at the IDP
 * be notified when tokens have been revoked
 * be notified when sessions have been invalidated
 * receive real-time signals about changes in account posture or integrity
 * receive real-time signals about changes in the device posture or integrity.
+* receive enterprise required policy that the new business application must enforce (e.g. identities authenticated by the enterprise IDP MUST NOT access the RP via a VPN)
+* only enforce the enterprise defined policy for users authenticated by the enterprise IDP
 
 To make that happen, I need to know:
 
