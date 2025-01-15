@@ -37,28 +37,30 @@ The IdP communicates changes in the account and device posture to the applicatio
 
 ## Identity Lifecycle Management
 
-|                              | JIT                                               | Pre-Provisioning                                                      | Entitlements                                          |
+|                              | JIT                                               | Group Provisioning                                                      | Account Metadata Management                                          |
 |------------------------------|---------------------------------------------------|-----------------------------------------------------------------------|-------------------------------------------------------|
 | Requirement                  | IPSIE P1                                          | IPSIE P2                                                              | IPSIE P3                                              |
-| Provisioning                 | JIT provisioning from SSO                         | App MUST allowed users to be provisioned by the IdP before they sign in                          | Same as P2                                            |
+| Provisioning                 | JIT provisioning from SSO                         | App MUST allow users to be provisioned by the IdP before they sign in                          | Same as P2                                            |
 | Deprovisioning               | None                                              | App MUST allow users to be deprovisioned by the IdP                                 | Same as P2                                            |
-| Entitlements                 | None                                              | None                                                                  | Group provisioning and deprovisioning from IdP to app |
+| Meta Data Updates                 | None                                              | None                                                                  | Account metadata can be updated from the IdP |
 
 
 
 ### IPSIE Provisioning Level P1 - JIT Provisioning
 
-IPSIE Provisioning Level P1 enables the IdP to provision users in the application when they log in via SSO. Users are not expected to exist in the application prior to the user logging in for the first time.
+IPSIE Provisioning Level P1 enables the IdP to provision users in the application when they log in via SSO. Users are not expected to exist in the application prior to the user logging in for the first time. The application must also be configurable to allow an enterprise to restrict users from directly creating an account through an alternate sign-up method (such as "Create Account with Email"). When this restriction is applied, the only mechanism for account creation will be through the enterprise's IAM tools. Additionally, the account which is created through the JIT process must not be overpermissioned. If the IdP does not specify the level of access the user should have during account creation, the new account must be created with the minimum level of application access possible.
 
 
-### IPSIE Provisioning Level P2 - Pre-Provisioning and Deprovisioning 
+### IPSIE Provisioning Level P2 - Pre-Provisioning and Deprovisioning through Groups
 
-Level P2 adds the ability to provision and deprovision users in the application before they have logged in. Prior to level P2, users were only JIT-provisioned in the application as part of SSO.
+Level P2 adds the ability to provision and deprovision accounts and an account's access in the application without the user needing to login. Prior to Level P2, users were only JIT-provisioned in the application as part of SSO. Also, the application must support a protocol or provide an interface that allows the IdP to read and edit the access levels of the application's accounts. 
+
+Additionally, for Level P2, the application must support the ability for all access levels within the application to be "mapped" to access groups within the IdP. The application must also provide a configuration to allow an enterprise to prevent IdP-managed accounts from being given access directly within the application. This will provide the enterprise with an assurance that the identity's group membership within the IdP accurately reflects the level of access the identity's account has within the application.
 
 
-### IPSIE Provisioning Level P3 - Entitlements
+### IPSIE Provisioning Level P3 - Account Metadata Management
 
-Level P3 adds the capability of communicating groups and group memberships from the IdP to the application.
+Level P3 adds the capability for the IdP to update the account's metadata. Examples include the IdP initiating an update for metadata fields such as the first name, last name, manager, manager's email, department, etc. The metadata must be able to be updated without the user logging into the application.
 
 
 
