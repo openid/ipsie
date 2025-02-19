@@ -2,9 +2,8 @@
 
 - *SL* - Session Lifecycle
 - *IL* - Identity Lifecycle
-- *E* - Entitlements
 
-Each level includes the previous level (_e.g._ SL3 includes the requirements of SL1 and SL2). Each set of levels is _independent_ from other levels (e.g. an application may achieve E3 while all other sets are at Level 1).
+Each level includes the previous level (_e.g._ SL3 includes the requirements of SL1 and SL2). Each set of levels is _independent_ from other levels (e.g. an application may achieve IL3 while all other sets are at Level 1).
 
 | IPSIE<br>LEVEL|   Applications<br>(aka RP)                                                 |  Identity Services                                                                                             |
 |---------------|----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
@@ -14,9 +13,7 @@ Each level includes the previous level (_e.g._ SL3 includes the requirements of 
 ||||
 | IL1           |  - MUST support JIT provisioning of users via SSO <br> - MUST accept user attributes during provisioning <br> - Out of band provisioning/self provisioning users to the organization SHALL NOT be allowed | |
 | IL2           |  - MUST support pre-provisioning of users by the Identity Services prior to signin<br> - MUST support deprovisioning of users by Identity Services <br> - MUST support mapping group claims to application roles | - MUST send selected group claims to Applications |
-||||
-| E1            | - MUST support asynchronous pre-provisioning/deprovisioning of groups and group memberships <br> - MUST NOT allow group and group membership management in the application | |
-| E2            | - MUST implement anti-entropy controls for groups and group membership.    | - MUST implement anti-entropy controls for groups and group membership.          |
+| IL3           |  - MUST expose application roles to the Identity Service | - MUST consume application roles and map to users<br> - MUST include roles as user attributes in JIT and async provisioning |
 
 -----
 ### IPSIE Session Lifecycle SL1 - Single Sign-On & Session Lifetime Controls
@@ -40,21 +37,18 @@ The Identity Service communicates changes in the account and device posture to t
 
 ### IPSIE Identity Lifecycle Level IL1 - JIT User Provisioning Control
 
-IPSIE Provisioning Level P1 requires the Identity Service to provision users in the application when they log in via SSO. Users must not exist in the application prior to the user logging in for the first time, eliminating alternative pathways for user provisioning (e.g. self-provisioning).
+IPSIE Provisioning Level IL1 requires the Identity Service to provision users in the application when they log in via SSO. Users must not exist in the application prior to the user logging in for the first time, eliminating alternative pathways for user provisioning (e.g. self-provisioning).
 
 ### IPSIE Identity Lifecycle Level IL2 - User Pre-Provisioning and Deprovisioning Control 
 
-Level P2 adds the ability to provision and deprovision users in the application before they have logged in. Prior to level P2, users were only JIT-provisioned in the application as part of SSO. An application at P2 MUST support pre-provisioning and deprovisioning of users.  Identity Services and Apps at P2 MAY support JIT provisioning for downward compatability with an Identity Service / Application operating at Level P1.
+Level IL2 adds the ability to provision and deprovision users in the application before they have logged in. Prior to level IL2, users were only JIT-provisioned in the application as part of SSO. An application at IL2 MUST support pre-provisioning and deprovisioning of users.  Identity Services and Apps at IL2 MAY support JIT provisioning for downward compatability with an Identity Service / Application operating at Level IL1.
 
-### IPSIE Entitlements Management Level E1 - Group and Group Membership Pre-Provisioning and Deprovisioning Control
+Level IL2 also adds group provisioning and deprovisioning into applications. Applications MUST support group and group membership provisioning from the Identity Service, and use the groups to map to application roles.
 
-Level E2 adds the capability of communicating groups and group memberships from the Identity Service to the application.  Groups and group memberships MUST be pre-provisioned and SHALL NOT be JIT provisioned.  Entitlements MAY be managed at the app, however, this is discouraged.  
+### IPSIE Identity Lifecycle Level IL3 - Group and Group Membership Pre-Provisioning and Deprovisioning Control
 
-### IPSIE Entitlements Management Level E2 - Group and Group Membership Anti-Entropy Control 
+Level IL3 enables the enterprise to manage application roles at the Identity Service. Applications MUST support exposing application roles to the Identity Service, so that the enterprise can assign application roles to users at the Identity Service. The Identity Service MUST include the application roles assigned to users in the user attributes during JIT and async provisioning. 
 
-At Level E3, the Identity Service is a single source of truth regarding the state of the groups and group membership.  Building upon E2, the control of provisioning / deprovisionions groups and group membership is the sole responsibility of the Identity Service and SHALL NOT be enabled within the application. Anti-entropy control must be established to prevent drift. 
-
-This SHALL NOT preclude the application from dynamically assessing privileges in real time as a component of session management.
 
 
 
