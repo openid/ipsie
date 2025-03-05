@@ -7,7 +7,7 @@ Each level includes the previous level (_e.g._ SL3 includes the requirements of 
 
 | IPSIE<br>LEVEL|   Application (aka RP)                                                 |  Identity Service                                                                                             |
 |---------------|----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
-| SL1           |   - MUST meet NIST 800-63-4 FAL2 compliance <br>- Session lifetime MUST be set from the assertion | - MUST meet NIST 800-63-4 FAL2 Compliance <br> - MUST enforce MFA and communicate an authentication class to the Application |
+| SL1           |   - MUST meet NIST 800-63-4 FAL2 compliance <br>- Session lifetime MUST be set from the assertion | - MUST meet NIST 800-63-4 FAL2 Compliance <br> - MUST enforce phishing resistance (such as MFA, or passkeys) and communicate an authentication class to the Application |
 | SL2           |  - MUST terminate sessions at the request of the Identity Service| - MUST enforce authentication method requests from Application |
 | SL3           |  - MUST communicate session state changes to Identity Service | - MUST communicate user, session, and device state changes to the Application |
 ||||
