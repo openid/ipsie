@@ -27,7 +27,7 @@ The terms "SCIM", "SCIM Client", and "SCIM Service" refer to the terminology def
 # 3.0 Profile
 
 ## 3.1 Client Authentication
-Identity Services shall authenticate to the Application's SCIM endpoint using OAuth 2.0 with the JWT Authorization Grant (RFC 7523). All of the following conditions should be met:
+Identity Services shall authenticate to the Application's SCIM endpoint using OAuth 2.0 with the JWT Client Authentication (RFC 7523). All of the following conditions should be met:
 * The token shall exchange a signed JWT for an access token and present that token in the {Authorization: Bearer} header on all subsequent SCIM requests.
 * The token must be scoped to "scim" and not grant broader permissions.
 * The token must contain a "token_endpoint" value which is the URL of the Application Provider's OAuth 2.0 token endpoint.
