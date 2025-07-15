@@ -78,9 +78,11 @@ User deletions are performed via the SCIM operation: DELETE /Users/{id}
 After a user is deleted, Application MUST allow the creation of a new user with the same username. 
 
 #### 3.2.7 Get All Users (GET /Users)
-A search for all users in the system are performed by the SCIM operation: GET /Users/
+A search for all users in the system are performed by the SCIM operation: GET /Users
 
 This endpoint ensures that any accounts which were made by a Just-in-Time (JIT) provisioning action can be managed by the Identity Service.
+
+To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Users request. To ensure system stability and prevent abuse, the Relying Party shall enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
 
 #### 3.2.8 Get User By ID (GET /Users/{id})
 User searches by id are performed via the SCIM operation: GET /Users/{id}
@@ -98,13 +100,20 @@ The Application MUST provide support all Group provisioning operations defined i
 
 **Note**: Within the IPSIE standard, Application permissions are referred to as "Roles." Within SCIM, Application permissions are referred to as "Groups." The term "Role" in IPSIE is functionally equivalent to the term "Group" in SCIM.
 
-#### 3.3.1 Get Group By ID (GET /Group/{id})
+#### 3.3.1 Get All Groups (GET /Groups)
+A search for all groups in the system are performed by the SCIM operation: GET /Groups
+
+This endpoint ensures that any all groups can be managed by the Identity Service.
+
+To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Groups request. To ensure system stability and prevent abuse, the Relying Party shall enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
+
+#### 3.3.2 Get Group By ID (GET /Group/{id})
 Group searches by id are performed via the SCIM operation: GET /Group/{id}?excludedAttributes=members
 
-#### 3.3.2 List Groups By Alternate Identifier (GET /Groups?)
+#### 3.3.3 List Groups By Alternate Identifier (GET /Groups?)
 User lookups by alternate identifier are performed via the SCIM operation: GET /Groups?filter={filterExpression}&excludedAttributes=members
 
-#### 3.3.3 Add or Remove Group Members (PATCH /Group/{id})
+#### 3.3.4 Add or Remove Group Members (PATCH /Group/{id})
 Members are added or removed from Groups via the SCIM operation: PATCH /Groups/{id}
 
 For each Operation in the PATCH:
