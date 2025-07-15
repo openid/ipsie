@@ -82,7 +82,7 @@ A search for all users in the system are performed by the SCIM operation: GET /U
 
 This endpoint ensures that any accounts which were made by a Just-in-Time (JIT) provisioning action can be managed by the Identity Service.
 
-To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Users request. To ensure system stability and prevent abuse, the Relying Party shall enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
+To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Users request. To ensure system stability and prevent abuse, the Application shall enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
 
 #### 3.2.8 Get User By ID (GET /Users/{id})
 User searches by id are performed via the SCIM operation: GET /Users/{id}
@@ -105,7 +105,7 @@ A search for all groups in the system are performed by the SCIM operation: GET /
 
 This endpoint ensures that any all groups can be managed by the Identity Service.
 
-To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Groups request. To ensure system stability and prevent abuse, the Relying Party shall enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
+To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Groups request. To ensure system stability and prevent abuse, the Application shall enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
 
 #### 3.3.2 Get Group By ID (GET /Group/{id})
 Group searches by id are performed via the SCIM operation: GET /Group/{id}?excludedAttributes=members
@@ -152,6 +152,7 @@ Additionally, the following security considerations must be included:
 * **Error Handling**: Error responses shall use the SCIM error format and shall not leak internal details.
 * **Replay Resistance**: Access tokens shall expire and nonces shall be validated to prevent replay.
 * **Auditing**: All provisioning actions and responses shall be logged for audit and troubleshooting.
+* **Rate Limiting**: All endpoints shall enforce rate limiting and must respond with "429 Too Many Requests" when limits are exceeded.
 
 # 5.0 Compliance Statement
 Implementation of all mandatory requirements in this profile will result in a SCIM 2.0 deployment that satisfies IPSIE Identity Lifecycle Level 1 (IL1). Specifically:
