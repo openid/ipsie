@@ -13,7 +13,7 @@ The profile addresses critical aspects of secure identity management, with parti
 By adhering to this profile, organizations can implement SCIM-based integrations that meet stringent security requirements while ensuring interoperability across different implementations.
 
 # 2.0 Conventions and Definitions
-The keywords "shall", "shall not", "should", "should not", "may", and "can" in this document are to be interpreted as described in ISO Directive Part 2 [ISODIR2]. These keywords are not used as dictionary terms such that any occurrence of them shall be interpreted as keywords and are not to be interpreted with their natural language meanings.
+The keywords "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "MAY", and "CAN" in this document are to be interpreted as described in ISO Directive Part 2 [ISODIR2]. These keywords are not used as dictionary terms such that any occurrence of them shall be interpreted as keywords and are not to be interpreted with their natural language meanings.
 
 
 ## 2.1 Terminology
@@ -27,20 +27,20 @@ The terms "SCIM", "SCIM Client", and "SCIM Service" refer to the terminology def
 # 3.0 Profile
 
 ## 3.1 OAuth 2.0 Requirements
-Identity Services shall integrate with the Application's SCIM endpoint using OAuth 2.0 for secure authorization and token-based authentication. The following requirements ensure consistent and secure handling of access tokens and authorization server configuration:
+Identity Services SHALL integrate with the Application's SCIM endpoint using OAuth 2.0 for secure authorization and token-based authentication. The following requirements ensure consistent and secure handling of access tokens and authorization server configuration:
 * OAuth 2.0 interactions must comply with JWT Client Authentication as defined in RFC 7523.
-* The token shall exchange a signed JWT for an access token and present that token in the {Authorization: Bearer} header on all subsequent SCIM requests.
+* The token SHALL exchange a signed JWT for an access token and present that token in the {Authorization: Bearer} header on all subsequent SCIM requests.
 * The token must be scoped to "scim" and not grant broader permissions.
 * The token must contain a "token_endpoint" value which is the URL of the Application Provider's OAuth 2.0 token endpoint.
-* All Authorization Server parameters should be discovered from OAuth Authorization Server metadata as defined in RFC 8414.
-* The Identity Service should expose a jwks_uri to allow the Application to perform signature verification
+* All Authorization Server parameters SHOULD be discovered from OAuth Authorization Server metadata as defined in RFC 8414.
+* The Identity Service SHOULD expose a jwks_uri to allow the Application to perform signature verification
 
 ## 3.2 SCIM Interoperability Requirements
 
 ### 3.2.1 General Requirements
-* The Identity Service shall implement the required functionality of a SCIM Client as defined in RFC 7643 and RFC 7644.
-* The Application shall implement the required functionality of a SCIM Client as defined in RFC 7643 and RFC 7644.
-* All SCIM operations shall be authenticated via OAuth 2.0; local modifications are prohibited.
+* The Identity Service SHALL implement the required functionality of a SCIM Client as defined in RFC 7643 and RFC 7644.
+* The Application SHALL implement the required functionality of a SCIM Client as defined in RFC 7643 and RFC 7644.
+* All SCIM operations SHALL be authenticated via OAuth 2.0; local modifications are prohibited.
 
 ### 3.2.2 User Provisioning Operations
 The Application MUST provide support all User provisioning operations defined in this section.
@@ -82,7 +82,7 @@ A search for all users in the system are performed by the SCIM operation: GET /U
 
 This endpoint ensures that any accounts which were made by a Just-in-Time (JIT) provisioning action can be managed by the Identity Service.
 
-To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Users request. To ensure system stability and prevent abuse, the Application shall enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
+To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Users request. To ensure system stability and prevent abuse, the Application SHALL enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
 
 #### 3.2.8 Get User By ID (GET /Users/{id})
 User searches by id are performed via the SCIM operation: GET /Users/{id}
@@ -105,7 +105,7 @@ A search for all groups in the system are performed by the SCIM operation: GET /
 
 This endpoint ensures that any all groups can be managed by the Identity Service.
 
-To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Groups request. To ensure system stability and prevent abuse, the Application shall enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
+To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Groups request. To ensure system stability and prevent abuse, the Application SHALL enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
 
 #### 3.3.2 Get Group By ID (GET /Group/{id})
 Group searches by id are performed via the SCIM operation: GET /Group/{id}?excludedAttributes=members
@@ -148,22 +148,22 @@ Application Providers MUST host a /Schemas endpoint to describe the supported sc
 For SCIM security considerations, see RFC 7643 and RFC 7644. 
 
 Additionally, the following security considerations must be included:
-* **Transport Security**: All endpoints shall enforce TLS 1.2 or later with strong cipher suites and certificate validation.
-* **Error Handling**: Error responses shall use the SCIM error format and shall not leak internal details.
-* **Replay Resistance**: Access tokens shall expire and nonces shall be validated to prevent replay.
-* **Auditing**: All provisioning actions and responses shall be logged for audit and troubleshooting.
-* **Rate Limiting**: All endpoints shall enforce rate limiting and must respond with "429 Too Many Requests" when limits are exceeded.
+* **Transport Security**: All endpoints SHALL enforce TLS 1.2 or later with strong cipher suites and certificate validation.
+* **Error Handling**: Error responses SHALL use the SCIM error format and SHALL NOT leak internal details.
+* **Replay Resistance**: Access tokens SHALL expire and nonces SHALL be validated to prevent replay.
+* **Auditing**: All provisioning actions and responses SHALL be logged for audit and troubleshooting.
+* **Rate Limiting**: All endpoints SHALL enforce rate limiting and must respond with "429 Too Many Requests" when limits are exceeded.
 
 # 5.0 Compliance Statement
 Implementation of all mandatory requirements in this profile will result in a SCIM 2.0 deployment that satisfies IPSIE Identity Lifecycle Level 1 (IL1). Specifically:
 
 * **Identity Service (SCIM Client)**
-    * Shall initiate all CRUD operations for Users and Groups.
+    * SHALL initiate all CRUD operations for Users and Groups.
 
 * **Application (SCIM Service)**
-    * Shall host all SCIM endpoints with full support for User and Group provisioning.
-    * Shall prevent local modifications outside of SCIM.
-    * Shall enforce OAuth 2.0 JWT Profile for authentication and adhere to the security considerations above.
+    * SHALL host all SCIM endpoints with full support for User and Group provisioning.
+    * SHALL prevent local modifications outside of SCIM.
+    * SHALL enforce OAuth 2.0 JWT Profile for authentication and adhere to the security considerations above.
 
 By conforming to this profile, implementations will achieve a consistent, secure, and interoperable baseline for enterprise identity lifecycle management.
 
