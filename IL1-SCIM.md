@@ -48,6 +48,10 @@ The Application MUST provide support all User provisioning operations defined in
 #### 3.2.3 Create User (POST /Users)
 User creation is performed by the SCIM operation POST /Users
 
+In addition to the user attributes required by RFC 7643, the following attributes are required to be part of the account schema:
+* An attribute which contains a unique identifier used by the enterprise to distinguish the owner of the account, such as "externalId."
+* An attribute which contains the primary email address of the user, such as "email"
+
 #### 3.2.4 Update User (PATCH /Users/{id})
 User updates are performed via the SCIM operation: PATCH /Users/{id}
 
