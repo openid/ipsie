@@ -142,7 +142,7 @@ Application Providers MUST host a /ServiceProviderConfig endpoint to describe th
 The operations MUST include, at minimum, the set of SCIM capabilities required for compatibility with this IPSIE profile.
 
 #### 3.4.3 /Schemas
-Application Providers MUST host a /Schemas endpoint to describe the supported schemas, as defined in Section 4 of RFC 7644. 
+Application Providers MUST host a /Schemas endpoint to describe the supported schemas, as defined in Section 4 of RFC 7644. There must be a schema for both Users and Groups. The schemas must include all required attributes from RFC 7643 and from Section 3.2.3 (Create User).
 
 # 4.0 Security Considerations
 For SCIM security considerations, see RFC 7643 and RFC 7644. 
