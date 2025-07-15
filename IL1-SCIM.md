@@ -58,6 +58,14 @@ The Identity Service SHOULD propagate user deactivation events to the Applicatio
 
 The Application SHOULD respond to user deactivation events by revoking the ability for the user to continue accessing the Application, including the revocation of currently active sessions. The revocation mechanism is an implementation detail outside the scope of this specification. Revocation SHOULD occur within 5 minutes of receiving the deactivation.
 
+When a user account is deactivated, all access mechanisms and authorizations associated with that account must also be deactivated. This includes, but is not limited to:
+* Web sessions
+* API tokens
+* Refresh tokens
+* Personal access tokens
+* SSH keys associated with the user
+* Device-based authentication credentials
+
 The Application MUST allow reactivation of a deactivated user. 
 
 #### 3.2.6 Delete User (DELETE /Users/{id})
