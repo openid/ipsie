@@ -40,7 +40,7 @@ Identity Services SHALL integrate with the Application's SCIM endpoint using OAu
 ### 3.2.1 General Requirements
 * The Identity Service SHALL implement the required functionality of a SCIM Client as defined in RFC 7643 and RFC 7644.
 * The Application SHALL implement the required functionality of a SCIM Client as defined in RFC 7643 and RFC 7644.
-* All SCIM operations SHALL be authenticated via OAuth 2.0; local modifications are prohibited.
+* All SCIM operations SHALL be authenticated and authorized via OAuth 2.0; local modifications are prohibited.
 
 ### 3.2.2 User Provisioning Operations
 The Application MUST provide support all User provisioning operations defined in this section.
