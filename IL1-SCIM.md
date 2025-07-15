@@ -77,10 +77,15 @@ User deletions are performed via the SCIM operation: DELETE /Users/{id}
 
 After a user is deleted, Application MUST allow the creation of a new user with the same username. 
 
-#### 3.2.7 Get User By ID (GET /Users/{id})
+#### 3.2.7 Get All Users (GET /Users)
+A search for all users in the system are performed by the SCIM operation: GET /Users/
+
+This endpoint ensures that any accounts which were made by a Just-in-Time (JIT) provisioning action can be managed by the Identity Service.
+
+#### 3.2.8 Get User By ID (GET /Users/{id})
 User searches by id are performed via the SCIM operation: GET /Users/{id}
 
-#### 3.2.8 List Users By Alternate Identifier (GET /Users?)
+#### 3.2.9 List Users By Alternate Identifier (GET /Users?)
 User searches by alternate identifier are performed via the SCIM operation: GET /Users?filter={filterExpression}
 
 Application Providers MUST support the following filter expressions:
