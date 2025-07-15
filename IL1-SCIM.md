@@ -31,8 +31,8 @@ Identity Services shall authenticate to the Application's SCIM endpoint using OA
 * The token shall exchange a signed JWT for an access token and present that token in the {Authorization: Bearer} header on all subsequent SCIM requests.
 * The token must be scoped to "scim" and not grant broader permissions.
 * The token must contain a "token_endpoint" value which is the URL of the Application Provider's OAuth 2.0 token endpoint.
-
-Additionally, the Identity Service should expose a jwks_uri to allow the Application to perform signature verification
+* All Authorization Server parameters should be discovered from OAuth Authorization Server metadata.
+* The Identity Service should expose a jwks_uri to allow the Application to perform signature verification
 
 ## 3.2 SCIM Interoperability Requirements
 
