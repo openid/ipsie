@@ -201,6 +201,10 @@ Group searches by id are performed by the SCIM operation GET /Group/{id}?exclude
 
 User lookups by alternate identifier are performed by the SCIM operation GET /Groups?filter={filterExpression}&excludedAttributes=members
 
+Application Providers MUST support the following filter expressions:
+
+// TODO: Add what filters are required to be supported
+
 ##### Add or Remove Group Members (PATCH /Group/{id})
 
 Members are added or removed from Groups via the SCIM operation PATCH /Groups/{id}
