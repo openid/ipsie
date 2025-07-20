@@ -44,12 +44,11 @@ This document defines the IPSIE Identity Lifecycle 1 (IL1) Profile for SCIM 2.0.
 The profile addresses critical aspects of secure identity management, with particular emphasis on:
 
 * Client authentication
-* Creation, update, and deletion of users
+* Retrieve, add, and modify Users.
+* Retrieve, add, and modify Groups.
 * Synchronization of data from the Identity Service to the Application
 
 By adhering to this profile, organizations can implement SCIM-based integrations that meet stringent security requirements while ensuring interoperability across different implementations.
-
- CRUD events and  lifecycle management of enterprise users and their assigned roles. The IL1 profile ensures that CRUD operations initiate from the Identity Service and that local modifications within the Application do not occur.
 
 ## Conventions and Definitions
 
@@ -68,7 +67,7 @@ SCIM Service Provider
 > An HTTP web application that provides identity information via the SCIM protocol.
 
 Role
->
+> TODO: Add definition
 
 Identity Service
 > Acts as the SCIM client, initiating all provisioning operations.
@@ -84,7 +83,7 @@ Note: When SCIM is applied to the context of IPISIE, the Identity Service acts a
 
 The Identity Service and Application MUST use OAuth 2.0 {{RFC6749}} for authentication and authorization of SCIM protocol.
 
-// TODO: Should this limk back to SL1?
+// TODO: Should this link back to SL1?
 // TODO: Expand Section
 
 The following requirements ensure  consistent and secure handling of access tokens and authorization server configuration:
@@ -105,9 +104,7 @@ The following requirements ensure  consistent and secure handling of access toke
 * The Identity Service SHALL implement the required functionality of a SCIM client as defined in {{RFC7643}} and {{RFC7644}}.
 * The Application SHALL implement the required functionality of a SCIM service provider as defined in {{RFC7643}} and {{RFC7644}}.
 * All SCIM operations SHALL be authenticated and authorized via OAuth 2.0 as specified in {{authn-authz}}.
-* Local modifications are prohibited.
-
-// TODO: Local modificaitons?
+* Local modifications to Users or Groups in the Application are prohibited.
 
 #### User Provisioning Operations
 
@@ -181,6 +178,12 @@ Application Providers MUST support the following filter expressions:
 The Application MUST provide support all Group provisioning operations defined in this section.
 
 **Note**: Within the IPSIE standard, Application permissions are referred to as "Roles." Within SCIM, Application permissions are referred to as "Groups." The term "Role" in IPSIE is functionally equivalent to the term "Group" in SCIM.
+
+##### Create Group (POST /Groups)
+
+Group creation is performed by the SCIM operation POST /Group.
+
+// TODO: Add more details
 
 ##### Get All Groups (GET /Groups)
 
