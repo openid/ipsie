@@ -191,7 +191,7 @@ A search for all groups in the system is performed by the SCIM operation GET /Gr
 
 This endpoint ensures that all groups are managed by the Identity Service.
 
-To ensure that large amounts of data can be read from the Application, the application must support with index-based or cursor-based pagination for the GET /Groups request. To ensure system stability and prevent abuse, the Application SHALL enforce rate limits on this endpoint and must respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
+To ensure that large amounts of data can be read from the Application, the application MUST support with index-based or cursor-based pagination for the GET /Groups request. To ensure system stability and prevent abuse, the Application SHALL enforce rate limits on this endpoint and MUST respond with appropriate headers, such as "429 Too Many Requests" and "Retry-After," when limits are exceeded.
 
 ##### Get Group By ID (GET /Group/{id})
 
