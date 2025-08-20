@@ -20,7 +20,7 @@ Each level includes the previous level (_e.g._ SL3 includes the requirements of 
 
 Level SL1 enables basic single sign-on from applications to the identity provider, communicating identity statements about the user. Single sign-on in Level SL1 meets the technical requirements of [FAL2 in NIST 800-63-4](https://pages.nist.gov/800-63-4/sp800-63c/fal/). 
 
-***Note:** IPSIE does not include all of the controls specified in NIST SP800-63-4 at FAL2.  IPSIE SL1 requires the technical controls from FAL2 which impact the security of the federation protocol(s).  Business agreements, such as data handling policies, are out of scope for IPSIE. 
+***Note:** IPSIE does not include all of the controls specified in NIST 800-63-4 at FAL2.  IPSIE SL1 requires the technical controls from FAL2 which impact the security of the federation protocol(s).  Business agreements, such as data handling policies, are out of scope for IPSIE. 
 
 The Application respects the session lifetime as communicated by the Identity Service in the assertion, and re-validates the session with the Identity Service after the expiration. Re-validation can occur with a new single sign-on flow, or using refresh tokens. It is likely that the session lifetime communicated by the Identity Service is shorter than the session at the Identity Service. The goal is to let the Identity Service set the interval in which the RP checks back at the Identity Service.
 
@@ -44,7 +44,7 @@ The Identity Service communicates changes in the account and device posture to t
 
 ### IPSIE Identity Lifecycle Level IL1 - User and Profile Synchronization
 
-IPSIE Lifecycle Level P1 requires the Identity Service to synchonize with the Application the users that have access and their profile data. The Application SHALL NOT independently create, update, or delete users or the provided profile data. While an Application may also support support Just In Time (JIT) for account creation using claims in an SSO token, JIT support is NOT a requirement of IPSIE.
+IPSIE Lifecycle Level P1 requires the Identity Service to synchonize with the Application the users that have access and their profile data. The Application SHALL NOT independently create, update, or delete users, or the provided profile data, of users managed by Identity Services. While an Application may also support support Just In Time (JIT) for account creation using claims in an SSO token, JIT support is NOT a requirement of IPSIE.
 
 ### IPSIE Identity Lifecycle Level IL2 - User Group Membership 
 
