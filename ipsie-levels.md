@@ -42,17 +42,17 @@ The Application communicates session changes to the Identity Service such as IP 
 
 The Identity Service communicates changes in the account and device posture to the application, enabling the application to take actions it determines are necessary based on its own policies about these changes.  Neither application nor identity services are obliged to act upon any state changes, the policies for responding to state changes are not in scope for SL3.
 
-### IPSIE Account Lifecycle Level AL1 - User and Profile Synchronization
+### IPSIE Account Lifecycle Level AL1 - User Deprovisioning
 
-IPSIE Lifecycle Level P1 requires the Identity Service to synchronize with the Application the users that have access and their profile data. The Application SHALL NOT independently create, update, or delete users, or the provided profile data, of users managed by Identity Services. While an Application may also support support Just In Time (JIT) for account creation using claims in an SSO token, JIT support is NOT a requirement of IPSIE.
+IPSIE Account Lifecycle Level AL1 requires the Application to deprovision users at the request of the Identity Service.
 
-### IPSIE Account Lifecycle Level AL2 - User Group Membership 
+### IPSIE Account Lifecycle Level AL2 - User and Group Management
 
-Level P2 adds the ability for the Identity Service to organize users into groups and to synchonize group memberhip with the Application. The Application MUST use group membership to determine the roles and capabilities of the user.
+Level AL2 adds the ability for the Identity Service to synchronize with the Application the users that have access and their profile data. The Application SHALL NOT independently create, update, or delete users, or the provided profile data, of users managed by Identity Services. While an Application may also support support Just In Time (JIT) for account creation using claims in an SSO token, JIT support is NOT a requirement of IPSIE. It also allows the Identity Service to organize users into groups and to synchonize group membership with the Application. The Application MUST use group membership to determine the roles and capabilities of the user.
 
-### IPSIE Account Lifecycle Level AL3 - User Roles
+### IPSIE Account Lifecycle Level AL3 - User Role Management
 
-Level P3 adds the ability for the Application to publish the roles that exist in the Application to the Identity Service, and for the Identity Service to map these roles to users and synchronize with the Application which roles each user has.
+Level AL3 adds the ability for the Application to publish the roles that exist in the Application to the Identity Service, and for the Identity Service to map these roles to users and synchronize with the Application which roles each user has.
 
 
 
