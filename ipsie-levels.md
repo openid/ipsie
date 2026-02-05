@@ -55,4 +55,44 @@ Level AL2 adds the ability for the Identity Service to synchronize with the Appl
 Level AL3 adds the ability for the Application to publish the roles that exist in the Application to the Identity Service, and for the Identity Service to map these roles to users and synchronize with the Application which roles each user has.
 
 
+## IPSIE Security Controls 
+
+The list below captures the security features described in the levels above. It is meant to summarize the security controls and capabilities provided at the different levels, rather than focus on protocol features.
+
+### SL1
+
+* Identity Service controls session lifetime in the Application (`session_expiry` claim in ID token)
+* Identity Service communicates user's authentication methods in the ID token (`amr` and `auth_time` claims)
+* Identity Service allows Application to specify the maximum acceptable time since the last time the user interactively authenticated at the Identity Service (`max_age`)
+* Identity Service rejects password grant
+* Identity Service requires authorization code flow with PKCE
+
+### SL2
+
+* Identity Service allows Application to request specific minimum authentication methods
+* Application prohibits unsolicited federation assertions from the Identity Service
+* Identity Service can terminate sessions at the Application
+
+### SL3
+
+* Application communicates session state changes to the Identity Service (actual state changes to be defined, such as IP address change)
+* Identity Service communicates changes in account and device posture to the Application (to be defined)
+
+### AL1
+
+* Identity Service can suspend/archive/delete/deprovision accounts at the Application
+
+### AL2
+
+* Identity Service can create and update accounts at the Application
+* Application does not allow local accounts to be created in the tenant managed by the Identity Service
+* Application supports mapping Identity Service groups to local Application roles and capabilities
+
+### AL3
+
+* Application exposes available roles to Identity Service so they can be managed and mapped to accounts
+
+
+
+
 
