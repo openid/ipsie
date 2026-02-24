@@ -32,7 +32,7 @@ Level SL2 adds the ability for the Application to request specific authenticatio
 
 Applications MUST NOT accept unsolicited federation requests from the identity service (e.g. SAML IdP initiated federation).
 
-When requested by the Identity Service, Applications MUST require the specified user re-authenticate at the Identity Service before continuing any action within the Application. This is effectively a "force re-authenticate" command, or an "expire session" command. This command does not place any requirements on what the Application does with artifacts like session identifiers or tokens. Identity Services are not obligated to send this command, but Applications are required to support receiving it.
+When requested by the Identity Service, Applications MUST obtain a new identity assertion from the Identity Service for the specified user before continuing any action within the Application. This is effectively a "force re-authenticate" command, or an "re-establish session" command. This command does not place any requirements on what the Application does with artifacts like session identifiers or tokens. Identity Services are not obligated to send this command, but Applications are required to support receiving it.
 
 When requested by the Identity Service, Applications MUST terminate all active sessions and any access tokens and refresh tokens they may have created for the specified user. Identity Services are not obligated to send this command, but Applications are required to support receiving it.
 
