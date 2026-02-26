@@ -16,6 +16,42 @@ The enterprise's "Identity Service" the logical set of services used by the ente
 
 The identity service is where the users' access to applications and other resources is managed and enforced.
 
+
+### Identity CRUD Implementation Concepts
+To understand and explain Identity CRUD implementations we need to define the terminology by defining the following concepts: Identity CRUD Data Models, Identity CRUD Protocol Roles, Identity CRUD Orchestrator Roles, Identity CRUD Triggers, and Identity CRUD Actions.
+
+#### Identity CRUD Data Models
+Identities are defined by two types of data entities: Resources and Attributes.
+##### Resource Object (RO)
+An object representing a user, group, or an extension object like devices, used by CRUD operations. The Resource Object contains attributes defined by schemas.
+##### Resource Attribute (RA)
+A named element of a Resource Object (RO). It includes characteristics like cardinality (single or multiple values), data types (string, boolean, binary, etc.), and properties (required, unique, etc.).
+
+#### Identity CRUD Orchestrator Roles
+Orchestrators are the operating parties that facilitate the exchange of data and ensure it flows correctly. Identity entities can have one or more orchestrator roles, depending on the overall architecture.
+##### Resource Creator (RC)
+An entity responsible for creating the Resource Object (RO). Typically, this role is found in HR or Resource Management (RM) applications that create resources and their attributes.
+##### Resource Updater (RU)
+An entity responsible for updating specific Resource Attributes (RA) of a Resource Object (RO) or the RO itself. This role is often used in conjunction with other roles that allow the entity to manage specific Resource Attributes (RA) and/or Resource Objects (RO).
+##### Resource Manager (RM)
+An entity that aggregates or transforms Resource Objects (RO) from resource creators/updaters (RC/RU) and makes them available for Resource Subscribers (RS) through multiple interactions. An example of this role could be an Identity-as-a-Service (IDaaS) cloud service.
+##### Resource Subscriber (RS)
+An entity that consumes Resource Objects (RO) and typically doesn't create new objects or attributes. An example would be a SaaS application that delivers a service and needs to create a database of objects, sourcing them from an RM/RC/RU.
+
+#### Identity CRUD Triggers
+Triggers are activities that may cause a CRUD action to occur. Triggers can result from business processes like a corporate hiring event, scheduled events such as a Unix bash script running as a cron job, or SSO just-in-time events arriving at a federated relying party that identifies a previously unseen user. Triggers can also be standardized events, such as those in the OpenID Shared Signals Framework. They are used to initiate CRUD (Create, Read, Update, Delete) operations.
+##### Periodic Intervals
+A periodic interval trigger is a pre-configured agreement where an action occurs at a specific time. This trigger is often recurring and typically initiates an action. An example of a periodic interval trigger could be a UNIX cron job executing a script.
+##### Events
+Event triggers are activities, contexts, or notifications that could happen at any time. Actions could also be triggered by a Security Event Token (SET) as described in [RFC8417].
+##### Application Triggers
+Application triggers occur when administrative or end-user interfaces are manipulated. An example of an application trigger might be a user modifying their profile information. Another example could be an Identity Administrator creating a new user in the Identity Management (IdM) system who immediately wants to update a SaaS application.
+##### SSO (Single Sign-On)
+Single Sign-On triggers occur when a user authenticates via federated protocols such as SAML 2.0 or OpenID Connect. If a federated assertion arrives for a user who has not yet been provisioned into the destination application, the application may be triggered to perform just-in-time (JIT) provisioning. This trigger occurs in scenarios where a Single Sign-On flow happens, but not all the resource attributes for the user object are passed in the federated assertion, necessitating an additional protocol to push or pull the remaining needed attributes.
+
+#### Identity CRUD Actions
+The protocols that define interactions between two standardized parties that adhere to HTTP RESTful conventions. It enables CRUD operations by mapping these activities to HTTP verbs such as POST, PUT, GET, DELETE, etc. An identity entity can have multiple roles depending on the objective of the use case being described.
+
 ### Application
 
 The "Application" is ultimately used by people within the enterprise company during their day to day work. Applications have their own resources, and users may be limited in which applications they can access or what they can do within an application. Applications use the Identity Service to authenticate users through a "single sign-on" process.  Users and entitlements are provisioned to applications through the identity service.
