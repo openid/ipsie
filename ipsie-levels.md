@@ -8,7 +8,7 @@ Each level includes the previous level (_e.g._ SL3 includes the requirements of 
 | IPSIE<br>LEVEL|   Application (aka RP)                                                 |  Identity Service                                                                                             |
 |---------------|----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | SL1           |   - MUST meet NIST 800-63-4 FAL2 compliance* <br>- Application-specific session lifetime MUST be set from the assertion | - MUST meet NIST 800-63-4 FAL2 Compliance* <br> - MUST enforce MFA and communicate an authentication class to the Application |
-| SL2           |  - MUST terminate sessions at the request of the Identity Service <br> - MUST not accept unsolicited federation assertions| - MUST enforce authentication method requests from Application |
+| SL2           |  - When requested from the Identity Service, MUST obtain a new identity assertion for the user from the Identity Service before continuing any action. <br> MUST revoke any active sessions and tokens at the request of the Identity Service <br> - MUST not accept unsolicited federation assertions| - MUST enforce authentication method requests from Application |
 | SL3           |  - MUST communicate session state changes to Identity Service | - MUST communicate user, session, and device state changes to the Application |
 ||||
 | AL1           | - MUST support suspend, archive, or delete of users by the Identity Service | - MUST deprovision accounts from the Application|
@@ -32,7 +32,9 @@ Level SL2 adds the ability for the Application to request specific authenticatio
 
 Applications MUST NOT accept unsolicited federation requests from the identity service (e.g. SAML IdP initiated federation).
 
-The Identity Services MUST be able to communicate a session termination event.  The Application MUST act upon session termination requests from the Identity Services.
+When requested by the Identity Service, Applications MUST obtain a new identity assertion from the Identity Service for the specified user before continuing any action within the Application. This is effectively a "force re-authenticate" command, or an "re-establish session" command. This command does not place any requirements on what the Application does with artifacts like session identifiers or tokens. Identity Services are not obligated to send this command, but Applications are required to support receiving it.
+
+When requested by the Identity Service, Applications MUST terminate all active sessions and any access tokens and refresh tokens they may have created for the specified user. Identity Services are not obligated to send this command, but Applications are required to support receiving it.
 
 ### IPSIE Session Lifecycle SL3 - Continuous Access
 
@@ -71,7 +73,8 @@ The list below captures the security features described in the levels above. It 
 
 * Identity Service allows Application to request specific minimum authentication methods
 * Application prohibits unsolicited federation assertions from the Identity Service
-* Identity Service can terminate sessions at the Application
+* Identity Service can terminate sessions and tokens at the Application
+* Identity Service can require the user re-authenticate at the Identity Service before they can continue to interact with the Application
 
 ### SL3
 
